@@ -14,8 +14,8 @@ export default function ImageTools() {
       <AIRecolor />
       <GenRemove />
       <AIBackgroundReplace />
-      <ExtractPart />
-      <BgRemove />
+      {/* <ExtractPart /> */}
+      {/* <BgRemove /> */}
     </>
   )
 }

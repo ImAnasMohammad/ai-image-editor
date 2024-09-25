@@ -20,14 +20,14 @@ export default function UploadForm() {
     return (
       <div className="w-full p-24 flex flex-col  justify-center  h-full">
         {selectedType === "image" ? <UploadImage /> : null}
-        {selectedType === "video" ? <UploadVideo /> : null}
+        {/* {selectedType === "video" ? <UploadVideo /> : null} */}
 
-        <RadioGroup
+        {/* <RadioGroup
           defaultValue="image"
           onValueChange={(e) => {
             setSelectedType(e)
           }}
-          className="flex items-center justify-center gap-8 py-8"
+          className="flex items-center justify-center gap-8 py-8 "
         >
           <Card
             onClick={(e) => setSelectedType("image")}
@@ -51,8 +51,8 @@ export default function UploadForm() {
               className={`${selectedType === "image" ? "text-primary" : null}`}
               size={36}
             />
-          </Card>
-          <Card
+          </Card> */}
+          {/* <Card
             onClick={(e) => setSelectedType("video")}
             className={cn(
               "flex flex-col items-center justify-center p-4 gap-4 cursor-pointer",
@@ -74,8 +74,8 @@ export default function UploadForm() {
               className={`${selectedType === "video" ? "text-primary" : null}`}
               size={36}
             />
-          </Card>
-        </RadioGroup>
+          </Card> */}
+        {/* </RadioGroup> */}
       </div>
     )
 }

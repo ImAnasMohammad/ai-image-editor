@@ -50,7 +50,7 @@ export default function BgRemove() {
 
         <Button
           disabled={
-            !activeLayer?.url || !activeTag || !activeColor || generating
+            !activeLayer?.url 
           }
           className="w-full mt-4"
           onClick={async () => {

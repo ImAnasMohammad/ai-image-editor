@@ -5,7 +5,7 @@ import { actionClient } from "@/server/safe-action"
 import z from "zod"
 
 cloudinary.config({
-  cloud_name: "restyled",
+  cloud_name: process.env.CLOUD,
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET,
 })
@@ -21,7 +21,7 @@ type UploadResult =
 export const uploadImage = actionClient
   .schema(formData)
   .action(async ({ parsedInput: { image } }): Promise<UploadResult> => {
-    console.log(image)
+    
     const formImage = image.get("image")
 
     if (!formImage) return { error: "No image provided" }
@@ -42,6 +42,7 @@ export const uploadImage = actionClient
             filename_override: file.name,
           },
           (error, result) => {
+            console.log('err===>111',error)
             if (error || !result) {
               console.error("Upload failed:", error)
               reject({ error: "Upload failed" })

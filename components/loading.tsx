@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogDescription,
   DialogHeader,
-  DialogTrigger,
   DialogContent,
   DialogTitle,
 } from "./ui/dialog"
@@ -18,7 +17,7 @@ export default function Loading() {
   const setGenerating = useImageStore((state) => state.setGenerating)
   const activeLayer = useLayerStore((state) => state.activeLayer)
   return (
-    <Dialog open={generating} onOpenChange={setGenerating}>
+    <Dialog open={generating} onOpenChange={setGenerating} >
       <DialogContent className="sm:max-w-[425px] flex flex-col items-center">
         <DialogHeader>
           <DialogTitle>Editing {activeLayer.name}</DialogTitle>

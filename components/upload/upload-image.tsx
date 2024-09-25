@@ -23,12 +23,13 @@ export default function UploadImage() {
       "image/png": [".png"],
       "image/jpg": [".jpg"],
       "image/webp": [".webp"],
-      "image/jpeg": ["jpeg"],
+      "image/jpeg": [".jpeg"],
     },
     onDrop: async (acceptedFiles, fileRejections) => {
       if (acceptedFiles.length) {
         const formData = new FormData()
-        formData.append("image", acceptedFiles[0])
+        formData.append("image", acceptedFiles[0]);
+
         //Generate Object url
         const objectUrl = URL.createObjectURL(acceptedFiles[0])
         setGenerating(true)
@@ -46,6 +47,7 @@ export default function UploadImage() {
         setActiveLayer(activeLayer.id)
         const res = await uploadImage({ image: formData })
 
+
         if (res?.data?.success) {
           updateLayer({
             id: activeLayer.id,
@@ -60,7 +62,7 @@ export default function UploadImage() {
           setTags(res.data.success.tags)
 
           setActiveLayer(activeLayer.id)
-          console.log(activeLayer)
+
           setGenerating(false)
         }
         if (res?.data?.error) {

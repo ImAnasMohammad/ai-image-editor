@@ -79,7 +79,10 @@ export default function AIBackgroundReplace() {
                 resourceType: "image",
               })
               setGenerating(false)
-              setActiveLayer(newLayerId)
+              setActiveLayer(newLayerId);
+              setPrompt('')
+            }else{
+                alert('Network issue.')
             }
           }}
         >

@@ -2,8 +2,6 @@
 
 import { useImageStore } from "@/lib/store"
 import { Button } from "@/components/ui/button"
-import { recolorImage } from "@/server/recolor"
-import { useAction } from "next-safe-action/hooks"
 import { Badge } from "@/components/ui/badge"
 import {
   Popover,
@@ -13,8 +11,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "framer-motion"
-import { useMemo } from "react"
 import { genRemove } from "@/server/gen-remove"
 import { Eraser } from "lucide-react"
 import { useLayerStore } from "@/lib/layer-store"
@@ -105,7 +101,10 @@ export default function GenRemove() {
                 publicId: activeLayer.publicId,
                 resourceType: "image",
               })
-              setActiveLayer(newLayerId)
+              setActiveLayer(newLayerId);
+              setActiveTag('')
+            }else{
+                alert('Network issue.')
             }
           }}
         >

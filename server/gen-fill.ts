@@ -6,7 +6,7 @@ import z from "zod"
 import { Cloudinary } from "@cloudinary/url-gen"
 
 cloudinary.config({
-  cloud_name: "restyled",
+    cloud_name: process.env.CLOUD,
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET,
 })
@@ -33,10 +33,9 @@ async function checkImageProcessing(url: string) {
 export const genFill = actionClient
   .schema(genFillSchema)
   .action(async ({ parsedInput: { activeImage, aspect, width, height } }) => {
-    const parts = activeImage.split("/upload/")
+    const parts = activeImage.split("/upload/");
 
     const fillUrl = `${parts[0]}/upload/ar_${aspect},b_gen_fill,c_pad,w_${width},h_${height}/${parts[1]}`
-    console.log(genFill)
 
     // Poll the URL to check if the image is processed
     let isProcessed = false
@@ -53,5 +52,6 @@ export const genFill = actionClient
     if (!isProcessed) {
       return { error: "Image processing failed" }
     }
+    console.log(fillUrl)
     return { success: fillUrl }
   })
